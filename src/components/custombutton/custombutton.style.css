@@ -1,0 +1,16 @@
+.custom-button {
+    height: 50px;
+    width: 200px;
+    background: black;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.custom-button:hover {
+    background: transparent !important;
+    border: solid 1px black;
+    color: black;
+}

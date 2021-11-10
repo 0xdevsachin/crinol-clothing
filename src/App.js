@@ -3,6 +3,7 @@ import HomePage from './pages/homepage/homepage.component';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
+import signin from './pages/signin/signin.component';
 function App() {
   return (
     <div>
@@ -11,6 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route path="/shop" component={ShopPage} />
+          <Route path="/signin" component={signin} />
         </Switch>
       </Router>
     </div>
