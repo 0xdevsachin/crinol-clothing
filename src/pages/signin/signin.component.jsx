@@ -1,6 +1,7 @@
 import React from "react";
 import './signin.style.css'
 import CustomButton from "../../components/custombutton/Custombutton.component";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 const signin = () =>{
     return(
         <div className="sign-in">
@@ -12,7 +13,7 @@ const signin = () =>{
                     <label>Password</label>
                     <input name="password" type="password" required placeholder="Password" />
                     <div className="btns">
-                    <CustomButton type="submit" name="Sign In" /> <CustomButton type="submit" name="Sign In with Google" bg="blue" />
+                    <CustomButton type="submit" >Sign In </CustomButton> <CustomButton onClick={signInWithGoogle} type="button" bg="blue" >Sign In with Google</CustomButton>
                     </div>    
                 </form>
             </div>
