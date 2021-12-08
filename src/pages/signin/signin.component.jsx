@@ -6,7 +6,7 @@ const signin = () =>{
     return(
         <div className="sign-in">
             <div className="formbox">
-                <form className="form">
+                <form className="form" autoComplete="off">
                     <label className="title">Sign In</label>
                     <label>Email</label>
                     <input name="email" type="email" required placeholder="Email" />
@@ -17,8 +17,8 @@ const signin = () =>{
                     </div>    
                 </form>
             </div>
-            {/* <div className="formbox">
-                <form className="form">
+            <div className="formbox">
+                <form className="form" autoComplete="off">
                     <label className="title">I don't have an Acount </label>
                     <label>Sign up with your email and password </label>
                     <label>Display Name</label>
@@ -29,9 +29,11 @@ const signin = () =>{
                     <input name="password" type="password" required placeholder="Password" />
                     <label>Confirm Password</label>
                     <input name="password" type="password" required placeholder="Confirm Password" />
-                    <CustomButton type="submit" name="Sign Up" /> 
+                    <div className="btns">
+                    <CustomButton type="submit" >Sign Up </CustomButton> <CustomButton onClick={signInWithGoogle} type="button" bg="blue" >Sign Up with Google</CustomButton>
+                    </div>
                 </form>
-            </div> */}
+            </div>
         </div>
         
     )
