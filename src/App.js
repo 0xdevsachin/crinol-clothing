@@ -20,8 +20,7 @@ function App() {
               })
             }else{
               setUser(null)
-            }
-            
+            } 
         })
     }, [])
   return (
