@@ -18,6 +18,32 @@ firebase.initializeApp(config);
 export const auth = firebase.auth(); // export this out where we need anything related to authentication
 export const firestore = firebase.firestore(); // 
 
+export const userDocData = async (userAuth, data) =>{
+    if(!userAuth) return ;
+    
+    const useRef = firestore.doc(`users/${userAuth.uid}`)
+
+    const snapShot = await useRef.get();
+    
+    if(!snapShot.exists){
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        try {
+            await useRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...data
+            })
+        } catch (error) {
+            console.log("some error occured ",error);
+        }
+    }
+
+    return useRef;
+}
+
 // Google Authentication Utility
 
 // Give access to new google auth provider class from authentication library
