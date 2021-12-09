@@ -11,7 +11,6 @@ const Signin = () =>{
     const [cpass, setcPass] = useState('');
     const SignUp = async (e) =>{
         e.preventDefault()
-        console.log(remail, rname, rpass, cpass)
         if(rpass !== cpass){
             alert('Password and confirm Password must be Same')
             return 0;
@@ -23,8 +22,13 @@ const Signin = () =>{
             setRName('')
             setrPass('')
             setcPass('')
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            if(err.code === "auth/email-already-in-use"){
+                alert('email already in use')
+            }
+            if(err.code === "auth/weak-password"){
+                alert('Password should be at least 6 characters')
+            }
         }
     }
     const SignIn = async (e) =>{
@@ -43,9 +47,9 @@ const Signin = () =>{
                 <form className="form" autoComplete="off" onSubmit={SignIn}>
                     <label className="title">Sign In</label>
                     <label>Email</label>
-                    <input name="email" type="email" required placeholder="Email" onChange={(e) => setLEmail(e.target.value)} />
+                    <input name="email" type="email" required value={lemail} placeholder="Email" onChange={(e) => setLEmail(e.target.value)} />
                     <label>Password</label>
-                    <input name="password" autoComplete="off" type="password" required placeholder="Password" onChange={(e) => setLPass(e.target.value)} />
+                    <input name="password" autoComplete="off" type="password" value={lpass} required placeholder="Password" onChange={(e) => setLPass(e.target.value)} />
                     <div className="btns">
                     <CustomButton type="submit" >Sign In </CustomButton> <CustomButton onClick={signInWithGoogle} type="button" google >Sign In with Google</CustomButton>
                     </div>    
@@ -56,13 +60,13 @@ const Signin = () =>{
                     <label className="title">I don't have an Acount </label>
                     <label>Sign up with Email and Password </label>
                     <label>Display Name</label>
-                    <input name="name" type="text" required placeholder="Name" onChange={(e) => setRName(e.target.value)} />
+                    <input name="name" type="text" value={rname} required placeholder="Name" onChange={(e) => setRName(e.target.value)} />
                     <label>Email</label>
-                    <input name="email" type="email" required placeholder="Email" onChange={(e) => setREmail(e.target.value)} />
+                    <input name="email" type="email" value={remail} required placeholder="Email" onChange={(e) => setREmail(e.target.value)} />
                     <label>Password</label>
-                    <input name="password" autoComplete="off" type="password" required placeholder="Password" onChange={(e) => setrPass(e.target.value)} />
+                    <input name="password" autoComplete="off" value={rpass} type="password" required placeholder="Password" onChange={(e) => setrPass(e.target.value)} />
                     <label>Confirm Password</label>
-                    <input name="password" autoComplete="off" type="password" required placeholder="Confirm Password" onChange={(e) => setcPass(e.target.value)} />
+                    <input name="password" autoComplete="off" value={cpass} type="password" required placeholder="Confirm Password" onChange={(e) => setcPass(e.target.value)} />
                     <div className="btns">
                     <CustomButton type="submit" >Sign Up </CustomButton> <CustomButton onClick={signInWithGoogle} type="button" google>Sign Up with Google</CustomButton>
                     </div>

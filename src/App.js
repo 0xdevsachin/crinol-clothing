@@ -23,8 +23,7 @@ function App() {
             }
             
         })
-    }, []) 
-    console.log(authUser)
+    }, [])
   return (
     <div>
       <Router>
