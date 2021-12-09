@@ -4,14 +4,22 @@
     background: black;
     color: white;
     border: none;
-    margin: 30px 6px;
     font-size: 12px;
     cursor: pointer;
     text-transform: uppercase;
 }
 
 .custom-button:hover {
-    background: transparent !important;
-    border: solid 1px black;
-    color: black;
+    border: none;
+    color: white;
+    background: rgb(15, 15, 15);
+}
+
+.google{
+    background-color: #4285F4;
+}
+.google:hover{
+    background-color: #2e78f0 !important;
+    border: none;
+    color: white;
 }

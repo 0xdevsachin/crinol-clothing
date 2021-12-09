@@ -10,6 +10,7 @@ function App() {
   const [authUser, setUser] = useState(null);
     useEffect(() =>{
         auth.onAuthStateChanged(user =>{
+          console.log(user);
             if(user) setUser(user)
             else setUser(null)
         })

@@ -8,7 +8,7 @@
 }
 
 .formbox {
-    min-width: 300px;
+    width: 450px;
     margin: 10px auto;
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
 input,
 .form .title {
     margin: 15px auto;
-    width: 400px;
+    width: 100%;
 }
 
 .form input {
@@ -45,8 +45,6 @@ input,
 .btns {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 input:focus {
@@ -54,12 +52,24 @@ input:focus {
 }
 
 @media screen and (max-width:550px) {
+    .formbox {
+        width: 300px;
+    }
+    .formbox button{
+        min-width: 150px;
+        margin: 5px auto;
+    }
+    .btns{
+        flex-wrap: wrap;
+    }
     .form label,
     input {
+        padding: 0 10px;
         margin: 15px auto;
-        width: 80%;
+        width: 100%;
     }
     .form .title {
+        text-align: center;
         font-size: 1.2rem;
     }
 }
