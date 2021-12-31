@@ -1,33 +1,32 @@
 import './App.css';
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import HomePage from './pages/homepage/homepage.component';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import signin from './pages/signin/signin.component';
 import { auth, userDocData } from "./firebase/firebase.utils";
-import { connect } from 'react-redux'
-import { setAuthUser } from "./redux/user/user.action"
-function App({setCurrentUser}) { 
+function App() {
+  const [authUser, setUser] = useState(null);
     useEffect(() =>{
           auth.onAuthStateChanged(async user =>{
             if(user) {
               const docRef = await userDocData(user);
               docRef.onSnapshot(snapshot => {
-                setCurrentUser({
+                setUser({
                   id : snapshot.id,
                   ...snapshot.data()
                 })
               })
             }else{
-              setCurrentUser(null)
+              setUser(null)
             } 
         })
-    }, [setCurrentUser])
+    }, [])
   return (
     <div>
       <Router>
-      <Header />
+      <Header currentUser={authUser} />
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route path="/shop" component={ShopPage} />
@@ -38,7 +37,4 @@ function App({setCurrentUser}) {
   );
 }
 
-const mapDispatchProps = dispatch => ({
-  setCurrentUser : user => dispatch(setAuthUser(user))
-})
-export default connect(null, mapDispatchProps)(App);
+export default App;
