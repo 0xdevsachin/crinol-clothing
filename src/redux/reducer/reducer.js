@@ -19,8 +19,22 @@ const authReducer = (state = null, action)=>{
     } 
 }
 
+const initialState = {
+    hidden : true
+}
 
-const reducers = combineReducers({ authReducer })
+const cartReducer = (state = initialState, action)=>{
+    if(action.type === 'TOOGLE_CART'){
+        return {
+            ...state,
+            hidden : !state.hidden
+        }
+    }else{
+        return state
+    }
+}
+
+const reducers = combineReducers({ authReducer, cartReducer })
 
 
 export default reducers

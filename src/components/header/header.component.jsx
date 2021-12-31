@@ -4,9 +4,13 @@ import './header.style.css'
 import { auth } from "../../firebase/firebase.utils"
 import { Link, useHistory  } from "react-router-dom";
 import NavLogo from '../../images/logo.png'
+import CartIcon from "../cart-icon/cart.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
+import { useSelector } from "react-redux";
 const Header = () =>{
     const userState = localStorage.getItem('crinol-clothing');
     const history = useHistory()
+    const CartState = useSelector(state => state.cartReducer)
     return(
         <div className="header">
             <Link to="/"><img className="header-img" src={NavLogo} alt="header-img" /></Link>
@@ -23,7 +27,11 @@ const Header = () =>{
                 :
                 <Link className="option" to="/signin">SignIn</Link>
             }
+            <CartIcon />
             </div>
+            {
+                CartState.hidden ? null : <CartDropdown />
+            }
         </div>
     )
 }
