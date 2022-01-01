@@ -11,8 +11,8 @@ const CollectionItem = ({title, items}) =>{
                 {
                 items
                 .filter((item, idx) => idx < 4)
-                .map(({id, ...otherprops}) =>(
-                    <DisplayItems key={id} {...otherprops}  />
+                .map((item) =>(
+                    <DisplayItems key={item.id} item={item}  />
                 ))
                 }
             </div>

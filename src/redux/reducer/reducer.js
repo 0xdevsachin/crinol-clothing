@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-
+import { CheckCartItems } from "../action/cart.utils";
 
 const authReducer = (state = null, action)=>{
     if(action.type === "SET_AUTH_USER"){
@@ -20,7 +20,8 @@ const authReducer = (state = null, action)=>{
 }
 
 const initialState = {
-    hidden : true
+    hidden : true,
+    cartItems : []
 }
 
 const cartReducer = (state = initialState, action)=>{
@@ -29,7 +30,14 @@ const cartReducer = (state = initialState, action)=>{
             ...state,
             hidden : !state.hidden
         }
-    }else{
+    }
+    else if(action.type === 'ADD_TO_CART'){
+        return {
+            ...state,
+            cartItems : CheckCartItems(state.cartItems, action.payload)
+        }
+    }
+    else{
         return state
     }
 }
