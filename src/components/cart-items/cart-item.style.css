@@ -1,0 +1,13 @@
+.cart-item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-item img{
+    width: 100px;
+    height: 120px;
+    margin: 10px auto;
+    object-fit: cover;
+}
