@@ -15,3 +15,22 @@ export const addtoCart = (items)=>{
         })
     }
 }
+
+export const decreaseCart = (items)=>{
+    return (dispatch) =>{
+        dispatch({
+            type : "DECREASE_CART_QUANTITY",
+            payload : items
+        })
+    }
+}
+
+
+export const removeItem = (items)=>{
+    return (dispatch) =>{
+        dispatch({
+            type : "REMOVE_FROM_CART",
+            payload : items
+        })
+    }
+}
