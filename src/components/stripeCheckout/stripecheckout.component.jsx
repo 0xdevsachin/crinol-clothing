@@ -11,7 +11,7 @@ const StripeButton = ({price}) =>{
     const dispatch = useDispatch()
     const onToken = () =>{
         console.clear()
-        alert('Payment Successfull')
+        alert('Payment Successful')
         dispatch(emptyCart());
     }
     return(
