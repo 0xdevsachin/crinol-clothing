@@ -54,6 +54,12 @@ const cartReducer = (state = initialState, action)=>{
             cartItems : CheckCartItems(state.cartItems, action.payload)
         }
     }
+    else if(action.type === 'EMPTY_CART'){
+        return {
+            ...state,
+            cartItems : []
+        }
+    }
     else{
         return state
     }

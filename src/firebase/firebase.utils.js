@@ -54,7 +54,7 @@ provider.setCustomParameters({ prompt: 'select_account' })
 
 
 // sign in with pop up method recieves many pop up parameter but here we using only sign in with google it can accept sign in with twitter and many
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(provider).catch((err) => {return});
 
 
 export default firebase;

@@ -56,7 +56,7 @@
 
 .total{
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: row-reverse;
 }

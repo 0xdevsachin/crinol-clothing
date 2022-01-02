@@ -34,3 +34,11 @@ export const removeItem = (items)=>{
         })
     }
 }
+
+export const emptyCart = () =>{
+    return (dispatch) =>{
+        dispatch({
+            type : "EMPTY_CART"
+        })
+    }
+}

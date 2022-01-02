@@ -1,13 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import StripeButton from "../../components/stripeCheckout/stripecheckout.component";
 import { addtoCart, decreaseCart, removeItem } from "../../redux/action/cart";
 import './checkout.css'
 const CheckOut = () =>{
     const dispatch = useDispatch();
     const data = useSelector(state => state.cartReducer.cartItems)
+    const user = useSelector(state => state.authReducer.user)
     var ans = 0;
     return (
-        <div className="checkout-item">
+        <>
+        {
+            user
+            ?
+            <div className="checkout-item">
             <div className="checkout-header">
                 <div>
                     <span>Product</span>
@@ -61,6 +67,9 @@ const CheckOut = () =>{
                 }
             </div>
             <div className="total"> Total : { ans }&#36; </div>
+            <div className="total">
+                <StripeButton price={ans} />
+            </div>
             </>
             :
             <div className="checkout-header empty">
@@ -68,6 +77,12 @@ const CheckOut = () =>{
             </div>
             }
         </div>
+        :
+        <div className="checkout-item">
+            <span style={{textAlign : 'center', marginTop : '250px', fontSize : '18px'}}>Please Sign in To Continue</span>
+        </div>
+        }
+        </>
     )
 }
 
