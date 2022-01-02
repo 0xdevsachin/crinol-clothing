@@ -2,7 +2,11 @@ import { combineReducers } from "redux";
 import { CheckCartItems, decreaseCart, removeCart } from "../action/cart.utils";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-const authReducer = (state = null, action)=>{
+
+const user_initial = {
+    user : null
+}
+const authReducer = (state = user_initial, action)=>{
     if(action.type === "SET_AUTH_USER"){
         return {
             ...state,
@@ -60,7 +64,7 @@ const reducers = combineReducers({ authReducer, cartReducer })
 const persistConfig = {
     key : 'root',
     storage,
-    whitelist : ['cartReducer']
+    whitelist : ['cartReducer', 'authReducer']
 }
 
 export default persistReducer(persistConfig, reducers)

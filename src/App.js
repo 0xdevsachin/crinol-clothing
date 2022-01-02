@@ -9,9 +9,10 @@ import CheckOut from "./pages/checkout/checkout.component";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, userDocData } from "./firebase/firebase.utils";
 import { setUser } from "./redux/action/actions";
+import CategoryComponent from "./pages/category/category.component";
 function App() {
-  const userState = useSelector( state => state.authReducer);
   const dispatch = useDispatch();
+  const userState = useSelector(state => state.authReducer);
   useEffect(() => {
    
     auth.onAuthStateChanged(async (user) => {
@@ -24,23 +25,16 @@ function App() {
               ...snapshot.data(),
             })
           );
-          localStorage.setItem('crinol-clothing', snapshot.id)
         });
       } else {
         dispatch(
           setUser(null)
           );
-          localStorage.removeItem('crinol-clothing')
       }
     });
     // eslint-disable-next-line
   }, []);
   // Checking if there any user currently Logged in 
-  var currentUser = auth.currentUser;
-  if(currentUser){
-    localStorage.setItem('crinol-clothing', currentUser.uid)
-  }
-  console.log(userState);
   return (
     <div>
       <Router>
@@ -48,8 +42,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/shop/:category" component={CategoryComponent} />
           <Route exact path="/checkout" component={CheckOut} />
-          { !currentUser
+          { !userState.user
           ?
           <Route exact path="/signin" component={signin} />
           :

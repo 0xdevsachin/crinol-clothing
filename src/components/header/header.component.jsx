@@ -6,11 +6,13 @@ import { Link, useHistory  } from "react-router-dom";
 import NavLogo from '../../images/logo.png'
 import CartIcon from "../cart-icon/cart.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { removeUser } from "../../redux/action/actions";
 const Header = () =>{
-    const userState = localStorage.getItem('crinol-clothing');
+    const userState = useSelector(state => state.authReducer);
     const history = useHistory()
     const CartState = useSelector(state => state.cartReducer)
+    const dispatch = useDispatch();
     return(
         <div className="header">
             <Link to="/"><img className="header-img" src={NavLogo} alt="header-img" /></Link>
@@ -18,10 +20,10 @@ const Header = () =>{
             <Link className="option" to="/shop">Shop</Link>
             <Link className="option" to="/contact">Contact</Link>
             {
-                userState ?
+                userState.user ?
                 <div className="option" onClick={() => {
                     auth.signOut()
-                    localStorage.removeItem('crinol-clothing')
+                    dispatch(removeUser(null))
                     history.push('/')
                 }}>Sign Out</div>
                 :
