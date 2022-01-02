@@ -66,7 +66,7 @@ const CheckOut = () =>{
             </div>
             </>
             :
-            <div className="checkout-header empty">
+            <div className="checkout-header empty" style={{height : '45vh'}}>
                 Your Cart is Empty
             </div>
             }

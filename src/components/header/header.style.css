@@ -44,9 +44,10 @@
 
 @media screen and (max-width: 750px) {
     body{
-        overflow-x: hidden;
+        overflow-x: hidden !important;
     }
     .options{
+        display: none;
         position: absolute;
         justify-content: space-evenly;
         align-items: center;
@@ -57,7 +58,6 @@
         height: 100vh;
         width: 100%;
         z-index: 999;
-        transform: translateX(100%);
         transition: transform 0.4s ease-in;
     }
     .menu-bar{
@@ -70,6 +70,6 @@
 }
 
 .option-active{
-    transform: translateX(0%) !important;
+    display: flex;
 }
 
