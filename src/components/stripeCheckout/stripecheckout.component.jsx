@@ -10,7 +10,8 @@ const StripeButton = ({price}) =>{
     const imageIcon = process.env.REACT_APP_STRIPE_ICON
     const dispatch = useDispatch()
     const onToken = () =>{
-        alert('Payment SuccessFull')
+        console.clear()
+        alert('Payment Successfull')
         dispatch(emptyCart());
     }
     return(

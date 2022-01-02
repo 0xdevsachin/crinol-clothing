@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, userDocData } from "./firebase/firebase.utils";
 import { setUser } from "./redux/action/actions";
 import CategoryComponent from "./pages/category/category.component";
+import Footer from "./components/footer/footer.component";
 function App() {
   const dispatch = useDispatch();
   const userState = useSelector(state => state.authReducer);
@@ -34,7 +35,6 @@ function App() {
     });
     // eslint-disable-next-line
   }, []);
-  // Checking if there any user currently Logged in 
   return (
     <div>
       <Router>
@@ -52,6 +52,7 @@ function App() {
         }
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 }

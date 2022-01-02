@@ -63,3 +63,12 @@
 .qname{
     font-size: 16px !important;
 }
+
+@media screen and (max-width:550px) {
+    .checkout-header{
+        width: 100%;
+    }
+    .checkout-header span{
+        font-size: 12px;
+    }
+}

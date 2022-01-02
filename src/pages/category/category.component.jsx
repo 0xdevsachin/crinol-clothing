@@ -1,6 +1,7 @@
 import React from "react";
 import SHOP_DATA from "../shop/ShopData";
 import DisplayItems from "../../components/items/items.component";
+import './category.style.css'
 function CategoryComponent({ match }) {
   const Data = SHOP_DATA.filter(
     (title) => title.routeName === match.params.category.toLowerCase()
@@ -28,7 +29,7 @@ function CategoryComponent({ match }) {
           </div>
         </div>
       ) : (
-        <h1 style={{textAlign: 'center'}}>Sorry, Category Not Found </h1>
+        <h1 style={{textAlign: 'center', minHeight : '80vh'}}>Sorry, Category Not Found </h1>
       )}
     </>
   );

@@ -9,6 +9,10 @@ import CartDropdown from "../cart-dropdown/cart-dropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { removeUser } from "../../redux/action/actions";
 const Header = () =>{
+    const NavToogle = () =>{
+        document.getElementById('navBar').classList.toggle('option-active')
+        document.querySelector('.header').classList.toggle('bg-color')
+    }
     const userState = useSelector(state => state.authReducer);
     const history = useHistory()
     const CartState = useSelector(state => state.cartReducer)
@@ -16,20 +20,25 @@ const Header = () =>{
     return(
         <div className="header">
             <Link to="/"><img className="header-img" src={NavLogo} alt="header-img" /></Link>
-            <div className="options">
-            <Link className="option" to="/shop">Shop</Link>
-            <Link className="option" to="/contact">Contact</Link>
+            <div className="options" id="navBar">
+            <Link className="option" onClick={NavToogle} to="/shop">Shop</Link>
             {
                 userState.user ?
                 <div className="option" onClick={() => {
                     auth.signOut()
                     dispatch(removeUser(null))
                     history.push('/')
+                    NavToogle()
                 }}>Sign Out</div>
                 :
-                <Link className="option" to="/signin">SignIn</Link>
+                <Link className="option" onClick={NavToogle} to="/signin">SignIn</Link>
             }
             <CartIcon />
+            </div>
+            <div className="menu-bar"  onClick={NavToogle}>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
             {
                 CartState.hidden ? null : <CartDropdown />

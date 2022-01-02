@@ -19,9 +19,6 @@ const CheckOut = () =>{
                     <span>Product</span>
                 </div>
                 <div>
-                    <span>Description</span>
-                </div>
-                <div>
                     <span>Quantity</span>
                 </div>
                 <div>
@@ -44,9 +41,6 @@ const CheckOut = () =>{
                             <div className="checkout-header" >
                                 <div>
                                     <img src={items.imageUrl} alt="checkout-imag" />
-                                </div>
-                                <div>
-                                    <span className="qname">{items.name}</span>
                                 </div>
                                 <div>
                                     <span className="pointer" onClick={() => dispatch(decreaseCart(items))}> &#8249; </span>
@@ -79,7 +73,7 @@ const CheckOut = () =>{
         </div>
         :
         <div className="checkout-item">
-            <span style={{textAlign : 'center', marginTop : '250px', fontSize : '18px'}}>Please Sign in To Continue</span>
+            <span style={{textAlign : 'center', marginTop : '250px', height: '40vh' , fontSize : '18px'}}>Please Sign in To Continue</span>
         </div>
         }
         </>
