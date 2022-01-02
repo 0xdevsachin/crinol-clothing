@@ -50,6 +50,7 @@ function App() {
           :
           <Redirect from="/signin" to="/" />
         }
+        <Redirect from="*" to="/" />
         </Switch>
       </Router>
       <Footer />
